@@ -1,4 +1,4 @@
-name: CI DEH Choice parameter
+name: DEH Workflow
 
 on:
   workflow_dispatch:
@@ -6,8 +6,6 @@ on:
       environment:
         type: environment
         description: Select the environment
-        default: Develop
-        
       boolean:
         type: boolean
         description: True or False
