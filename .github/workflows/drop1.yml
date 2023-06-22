@@ -5,29 +5,12 @@ on:
       - main
   workflow_dispatch:
      inputs:
-      environment:
-        type: environment
-        description: Select the environment
       choice:
          type: choice
          description: Make a choice
          options:
          - drop2
          - drop3
-         
-       
-      run: |
-          if [ "${{ matrix.choice }}" == "drop2" ]; then
-            echo "Running drop2 workflow"
-            # Execute drop2 workflow steps
-          elif [ "${{ matrix.choice }}" == "drop3" ]; then
-            echo "Running drop3 workflow"
-            # Execute drop3 workflow steps
-          else
-            echo "Invalid choice"
-            exit 1
-          fi
-
 jobs:
   build:
     runs-on: ubuntu-latest
