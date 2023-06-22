@@ -10,9 +10,6 @@ jobs:
     steps:
       - name: Prompt for choice parameter
         id: choice
-           - drop2
-           - drop3
-
       - name: Check choice parameter and run corresponding workflow
         if: steps.choice.outputs.choice_parameter == 'drop2'
         run: |
