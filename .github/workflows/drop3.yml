@@ -15,9 +15,9 @@ on:
         type: choice
         description: Make a choice
         options:
-        - choice 1
-        - choice 2
-        - choice 3
+        - foo
+        - bar
+        - baz
 jobs:
   build:
     runs-on: ubuntu-latest
