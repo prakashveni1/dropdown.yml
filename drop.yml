@@ -1,0 +1,17 @@
+name: Dropdown List Workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Dropdown Value
+        id: dropdown
+        run: |
+          echo "::set-output name=options::Option 1,Option 2,Option 3"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # Add additional steps for your workflow
