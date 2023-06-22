@@ -1,4 +1,4 @@
-name: CI
+name: CI DEH Choice parameter
 
 on:
   workflow_dispatch:
@@ -6,6 +6,8 @@ on:
       environment:
         type: environment
         description: Select the environment
+        default: Dev
+        
       boolean:
         type: boolean
         description: True or False
@@ -13,9 +15,9 @@ on:
         type: choice
         description: Make a choice
         options:
-        - foo
-        - bar
-        - baz
+        - Batabase
+        - Bat
+        - Config
 jobs:
   build:
     runs-on: ubuntu-latest
