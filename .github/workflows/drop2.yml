@@ -1,0 +1,20 @@
+name: Choice Parameters Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      option:
+        description: 'Select an option'
+        required: true
+        default: 'Option 1'
+        options:
+          - 'Option 1'
+          - 'Option 2'
+          - 'Option 3'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Selected Option
+        run: echo "Selected option: ${{ github.event.inputs.option }}"
+      # Add additional steps for your workflow
