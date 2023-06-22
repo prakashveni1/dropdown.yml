@@ -3,14 +3,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-     inputs:
-      choice:
-         type: choice
-         description: Make a choice
-         options:
-         - drop2
-         - drop3
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,6 +10,8 @@ jobs:
     steps:
       - name: Prompt for choice parameter
         id: choice
+           - drop2
+           - drop3
 
       - name: Check choice parameter and run corresponding workflow
         if: steps.choice.outputs.choice_parameter == 'drop2'
