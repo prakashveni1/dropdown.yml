@@ -15,7 +15,7 @@ on:
         type: choice
         description: Make a choice
         options:
-        - Batabase
+        - database
         - Bat
         - Config
 jobs:
