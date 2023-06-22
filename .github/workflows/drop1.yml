@@ -3,13 +3,22 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+     inputs:
+      choice:
+         type: choice
+         description: Make a choice
+         options:
+         - drop2
+         - drop3
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Prompt for choice parameter
-        id: choice
+      - name: Set Dropdown Value
+        id: dropdown
+        run: |
+          echo "::set-output name=options::drop2,drop3"
       - name: Check choice parameter and run corresponding workflow
         if: steps.choice.outputs.choice_parameter == 'drop2'
         run: |
@@ -19,3 +28,6 @@ jobs:
         if: steps.choice.outputs.choice_parameter == 'drop3'
         run: |
           echo "Running drop3 workflow"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # Add additional steps for your workflow
