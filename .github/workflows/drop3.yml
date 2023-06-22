@@ -15,9 +15,9 @@ on:
         type: choice
         description: Make a choice
         options:
-        - database
-        - Bat
-        - Config
+        - choice 1
+        - choice 2
+        - choice 3
 jobs:
   build:
     runs-on: ubuntu-latest
