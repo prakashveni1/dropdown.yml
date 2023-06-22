@@ -5,6 +5,7 @@ on:
       option:
         description: 'Select an option'
         required: true
+        default: 'Option 1, Option2, Option3'
         options:
           - 'Option 1'
           - 'Option 2'
