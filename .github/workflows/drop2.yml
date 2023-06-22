@@ -6,6 +6,9 @@ on:
         description: 'Select an option'
         required: true
         default: Option 1
+      choice:
+        type: choice
+        description: Make a choice
         options:
           - Option 1
           - Option 2
