@@ -16,5 +16,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Selected Options
-        run: echo "Selected options:${{ github.event.inputs.options }}"
+        run: echo "Selected option:${{ github.event.inputs.option }}"
       # Add additional steps for your workflow
