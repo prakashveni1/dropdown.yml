@@ -1,4 +1,4 @@
-name: DEH Workflow
+name: DEH Workflow2
 
 on:
   workflow_dispatch:
