@@ -1,0 +1,31 @@
+name: DEH Switch Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        choice: [drop2, drop3]  # Available choices
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run based on choice
+        run: |
+          if [ "${{ matrix.choice }}" == "drop2" ]; then
+            echo "Running drop2 workflow"
+            # Execute drop2 workflow steps
+          elif [ "${{ matrix.choice }}" == "drop3" ]; then
+            echo "Running drop3 workflow"
+            # Execute drop3 workflow steps
+          else
+            echo "Invalid choice"
+            exit 1
+          fi
