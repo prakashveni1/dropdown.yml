@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+       choice:
+        type: choice
+        description: Make a choice
+        options:
+        - drop2
+        - drop3
 
 jobs:
   build:
@@ -11,7 +17,7 @@ jobs:
       - name: Set Dropdown Value
         id: dropdown
         run: |
-          echo "::set-output name=options::Option 1,Option 2,Option 3"
+          echo "::set-output name=options::drop2,drop3"
       - name: Checkout repository
         uses: actions/checkout@v2
       # Add additional steps for your workflow
