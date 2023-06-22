@@ -14,11 +14,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Set Dropdown Value
-        id: dropdown
+      - name: Prompt for choice parameter
+        id: choice
+
+      - name: Check choice parameter and run corresponding workflow
+        if: steps.choice.outputs.choice_parameter == 'drop2'
         run: |
-          echo "::set-output name=options::drop2,drop3"
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      # Add additional steps for your workflow
+          echo "Running drop2 workflow"
+
+      - name: Check choice parameter and run corresponding workflow
+        if: steps.choice.outputs.choice_parameter == 'drop3'
+        run: |
+          echo "Running drop3 workflow"
