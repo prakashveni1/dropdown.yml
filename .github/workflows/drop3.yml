@@ -19,6 +19,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Perform some action
+        run: |
+          if ${{ github.event.inputs.checkbox_input }} == 'true'
+          then
+            # Checkbox input is checked
+            echo "Checkbox is checked!"
+          else
+            # Checkbox input is not checked
+            echo "Checkbox is not checked!"
+          fi
 
       - name: greet
         run: | 
