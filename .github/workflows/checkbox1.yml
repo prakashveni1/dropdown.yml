@@ -7,6 +7,10 @@ on:
         description: 'Select checkboxes'
         required: true
         type: checkbox
+        options:
+        - DB
+        - WAR
+        - Config
 
 jobs:
   build:
