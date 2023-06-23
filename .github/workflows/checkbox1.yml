@@ -1,20 +1,25 @@
-name: Multi-Workflow Selection
+name: Mixed workflow
+
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      name:
+        type: choice
+        description: Who to greet
+        options: 
+        - monalisa
+        - cschleiden
+      message:
+        required: true
+      use-emoji:
+        type: boolean
+        description: Include  emojis
+      environment:
+        type: environment
 
 jobs:
-  workflow_selection:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Select Workflows
-        id: workflow_input
-        run: echo "::set-output name=selected_workflows::${{ join(github.event.inputs.workflows, ',') }}"
-    
-    inputs:
-      workflows:
-        description: 'Select workflows'
-        required: true
-        default: 'workflow1,workflow2,workflow3'
-        # Add additional workflow options if needed
+    - name: Send greeting
