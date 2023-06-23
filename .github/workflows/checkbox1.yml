@@ -1,6 +1,10 @@
 name: Checkbox Events Workflow
 
 on:
+  push:
+    branches:
+      - main
+      
   workflow_dispatch:
     inputs:
       checkboxes:
