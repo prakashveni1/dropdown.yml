@@ -11,12 +11,10 @@ jobs:
       - name: Select Workflows
         id: workflow_input
         run: echo "::set-output name=selected_workflows::${{ join(github.event.inputs.workflows, ',') }}"
-
-      - name: Run Selected Workflows
-        run: |
-          selected_workflows=${{ steps.workflow_input.outputs.selected_workflows }}
-          IFS=',' read -ra workflows <<< "$selected_workflows"
-          for workflow in "${workflows[@]}"; do
-            echo "Running workflow: $workflow"
-            gh workflow run "$workflow"
-          done
+    
+    inputs:
+      workflows:
+        description: 'Select workflows'
+        required: true
+        default: 'workflow1,workflow2,workflow3'
+        # Add additional workflow options if needed
