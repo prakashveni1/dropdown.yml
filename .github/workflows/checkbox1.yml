@@ -7,6 +7,15 @@ on:
         description: 'Checkbox input description'
         required: false
         default: 'false'
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - Database
+        - batch
+        - bat
+        - war
+        - config
 
 jobs:
   build:
