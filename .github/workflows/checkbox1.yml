@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+     inputs:
+      choice:
+         type: choice
+         description: Make a choice
+         options:
+         - DB
+         - BAT
+         - WAR
 
 jobs:
   build:
