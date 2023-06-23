@@ -1,0 +1,28 @@
+name: Your Workflow Name
+
+on:
+  workflow_dispatch:
+    inputs:
+      checkbox_input:
+        description: 'Checkbox input description'
+        required: false
+        default: 'false'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Perform some action
+        run: |
+          if ${{ github.event.inputs.checkbox_input }} == 'true'
+          then
+            # Checkbox input is checked
+            echo "Checkbox is checked!"
+          else
+            # Checkbox input is not checked
+            echo "Checkbox is not checked!"
+          fi
