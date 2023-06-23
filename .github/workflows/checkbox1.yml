@@ -13,8 +13,8 @@ jobs:
         id: options
         run: echo "::set-output name=selected_options::${{ join(github.event.inputs.options, ',') }}"
     
-    inputs:
-      options:
-        description: 'Select options'
-        required: true
-        default: 'Option 1,Option 2,Option 3'
+         inputs:
+           options:
+           description: 'Select options'
+           required: true
+           default: 'Option 1,Option 2,Option 3'
