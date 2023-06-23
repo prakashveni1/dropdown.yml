@@ -3,14 +3,17 @@ name: main workflow
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      option:
+        description: 'Select an option'
         required: true
-        default: 'warning'
+        default: drop2.yml
+      choice:
         type: choice
+        description: Make a choice
         options:
           - drop2.yml
           - drop3.yml
+          
       environment:
         description: 'Environment to run tests against'
         type: environment
@@ -18,7 +21,7 @@ on:
 
       strategy:
       matrix:
-      choice: [drop2.yml, drop3.yml]  # Available choices
+       choice: [drop2.yml, drop3.yml]  # Available choices
 
       steps:
       - name: Checkout code
