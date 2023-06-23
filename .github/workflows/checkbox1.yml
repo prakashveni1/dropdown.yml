@@ -1,41 +1,36 @@
-name: main workflow
+name: DEH mainworkflow
 
 on:
   workflow_dispatch:
     inputs:
-      option:
-        description: 'Select an option'
-        required: true
-        default: drop2.yml
+      environment:
+        type: environment
+        description: Select the environment 
       choice:
         type: choice
         description: Make a choice
         options:
-          - drop2.yml
-          - drop3.yml
-          
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+        - drop2.yml
+        - drop3.yml
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      strategy:
-      matrix:
-       choice: [drop2.yml, drop3.yml]  # Available choices
-
-      steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run based on choice
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Perform some action
         run: |
-          if [ "${{ matrix.choice }}" == "drop2.yml" ]; then
-            echo "Running drop2 workflow"
-            # Execute drop2 workflow steps
-          elif [ "${{ matrix.choice }}" == "drop3.yml" ]; then
-            echo "Running drop3 workflow"
-            # Execute drop3 workflow steps
+          if ${{ github.event.inputs.checkbox_input }} == 'true'
+          then
+            # Checkbox input is checked
+            echo "Checkbox is checked!"
           else
-            echo "Invalid choice"
-            exit 1
+            # Checkbox input is not checked
+            echo "Checkbox is not checked!"
           fi
+
+      - name: greet
+        run: | 
+          echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}" 
+          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }}
