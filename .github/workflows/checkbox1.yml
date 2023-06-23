@@ -1,22 +1,22 @@
-name: Checkbox Options Example
+name: Multi-Workflow Selection
 on:
   push:
     branches:
       - main
 
 jobs:
-  build:
+  workflow_selection:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Select Options
-        id: options
-        run: echo "::set-output name=selected_options::${{ join(github.event.inputs.options, ',') }}"
-    
-         inputs:
-           options:
-           description: 'Select options'
-           required: true
-          default: 'Option 1,Option 2,Option 3'
+      - name: Select Workflows
+        id: workflow_input
+        run: echo "::set-output name=selected_workflows::${{ join(github.event.inputs.workflows, ',') }}"
 
-
+      - name: Run Selected Workflows
+        run: |
+          selected_workflows=${{ steps.workflow_input.outputs.selected_workflows }}
+          IFS=',' read -ra workflows <<< "$selected_workflows"
+          for workflow in "${workflows[@]}"; do
+            echo "Running workflow: $workflow"
+            gh workflow run "$workflow"
+          done
