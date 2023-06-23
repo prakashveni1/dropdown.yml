@@ -6,6 +6,13 @@ on:
       selected_yamls:
         description: 'Select YAML files to run'
         required: true
+      choice:
+        type: choice
+        description: Make a choice
+        options:
+        - Database
+        - batch
+        - bat
 
 jobs:
   run_selected_yamls:
