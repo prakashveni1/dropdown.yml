@@ -13,10 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Run script based on checkboxes
-        run: |
-          echo "Selected checkboxes: ${{ toJson(github.event.inputs.checkboxes) }}"
-          # Perform actions based on the selected checkboxes
+      - name: Select Options
+        id: options
+        run: echo "::set-output name=selected_options::${{ join(github.event.inputs.options, ',') }}"
+    
+         inputs:
+         options:
+           description: 'Select options'
+           required: true
+           default: 'Option 1,Option 2,Option 3'
