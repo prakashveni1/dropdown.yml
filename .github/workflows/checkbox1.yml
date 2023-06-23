@@ -1,18 +1,12 @@
-name: Your Workflow
+name: Checkbox Events Workflow
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
-     inputs:
-      choice:
-         type: choice
-         description: Make a choice
-         options:
-         - DB
-         - BAT
-         - WAR
+    inputs:
+      checkboxes:
+        description: 'Select checkboxes'
+        required: true
+        type: checkbox
 
 jobs:
   build:
@@ -22,18 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build and test
+      - name: Run script based on checkboxes
         run: |
-          # Build and test commands here
-          inputs:
-          enable-option:
-          description: 'Enable the option'
-          default: false
-          required: false
-          type: boolean
-            
-      - name: Perform additional action
-        if: ${{ github.workflow.inputs.enable-option == 'true' }}
-        run: |
-          # Additional action if the checkbox is enabled
-
+          echo "Selected checkboxes: ${{ toJson(github.event.inputs.checkboxes) }}"
+          # Perform actions based on the selected checkboxes
