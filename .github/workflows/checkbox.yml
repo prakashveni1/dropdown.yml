@@ -1,0 +1,24 @@
+name: Dispatch Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      selected_yamls:
+        description: 'Select YAML files to run'
+        required: true
+
+jobs:
+  run_selected_yamls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run selected YAML files
+        run: |
+          IFS=',' read -ra YAMLS <<< "${{ github.event.inputs.selected_yamls }}"
+          for yaml in "${YAMLS[@]}"; do
+            # Run each selected YAML file using your desired command or action
+            # Example: `some-command "${yaml}"`
+            echo "Running YAML: ${yaml}"
+          done
