@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        choice: [drop2, drop3]  # Available choices
+        choice: [drop2.yml, drop3.yml]  # Available choices
 
     steps:
       - name: Checkout code
@@ -18,10 +18,10 @@ jobs:
 
       - name: Run based on choice
         run: |
-          if [ "${{ matrix.choice }}" == "drop2" ]; then
+          if [ "${{ matrix.choice }}" == "drop2.yml" ]; then
             echo "Running drop2 workflow"
             # Execute drop2 workflow steps
-          elif [ "${{ matrix.choice }}" == "drop3" ]; then
+          elif [ "${{ matrix.choice }}" == "drop3.yml" ]; then
             echo "Running drop3 workflow"
             # Execute drop3 workflow steps
           else
