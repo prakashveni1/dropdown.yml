@@ -1,11 +1,11 @@
-name: DEH mainworkflow
+name: DEH Workflow
 
 on:
   workflow_dispatch:
     inputs:
       environment:
         type: environment
-        description: Select the environment 
+        description: Select the environment
       choice:
         type: choice
         description: Make a choice
@@ -17,18 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Perform some action
-        run: |
-          if ${{ github.event.inputs.checkbox_input }} == 'true'
-          then
-            # Checkbox input is checked
-            echo "Checkbox is checked!"
-          else
-            # Checkbox input is not checked
-            echo "Checkbox is not checked!"
-          fi
+      - uses: actions/checkout@v2
 
       - name: greet
         run: | 
-          echo "https://github.com/prakashveni1/dropdown.yml/blob/main/.github/workflows/"drop2.yml" 
-          echo "https://github.com/prakashveni1/dropdown.yml/blob/main/.github/workflows/drop3.yml"
+          echo "environment is ${{ github.event.inputs.environment }} / ${{ inputs.environment }}"
+          echo "choice is ${{ github.event.inputs.choice }}" / ${{ inputs.choice }} 
