@@ -11,6 +11,9 @@ jobs:
     strategy:
       matrix:
         choice: [drop2.yml, drop3.yml]  # Available choices
+        options:
+        - drop2.yml
+        - drop3.yml
 
     steps:
       - name: Checkout code
